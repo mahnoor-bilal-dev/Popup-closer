@@ -1,0 +1,7 @@
+node_modules/
+dist/
+bench/cache/
+*.har
+*.mhtml
+.DS_Store
+*.md

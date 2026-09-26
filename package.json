@@ -1,0 +1,16 @@
+{
+  "name": "popguard",
+  "version": "1.0.0",
+  "description": "Behavior-based deceptive popup and click-hijack guard",
+  "scripts": {
+    "build": "esbuild extension/src/content/index.ts --bundle --outfile=extension/dist/content/content.js && esbuild extension/src/background/index.ts --bundle --outfile=extension/dist/background/background.js",
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.42.0",
+    "@types/chrome": "^0.0.260",
+    "@types/node": "^20.11.24",
+    "esbuild": "^0.20.1",
+    "typescript": "^5.3.3"
+  }
+}
