@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Fixture: Invisible Full-Page Anchor Overlay</title>
+  <style>
+    body { margin: 0; padding: 0; }
+
+    /* Legitimate page content underneath */
+    #content {
+      padding: 40px;
+      font-family: sans-serif;
+    }
+
+    /*
+     * Deceptive overlay: a full-page, invisible <a> element that sits on top
+     * of all content and silently redirects on any click.
+     * Visibility: hidden makes it invisible but still click-interceptable
+     * in real browsers; opacity:0 is also common.
+     */
+    #overlay-anchor {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 9999;
+      opacity: 0;
+      /* pointer-events kept at default 'auto' so it intercepts clicks */
+      display: block;
+      /* href is present but hidden from the user */
+    }
+  </style>
+</head>
+<body>
+  <!-- The deceptive invisible overlay anchor -->
+  <a id="overlay-anchor" href="https://malicious.example.com/redirect" target="_blank" tabindex="-1">
+    <!-- intentionally empty: no visible text -->
+  </a>
+
+  <div id="content">
+    <h1>Normal Page Content</h1>
+    <p>This page looks innocent, but clicking anywhere triggers a redirect.</p>
+    <button id="normal-btn" type="button">Do Something</button>
+  </div>
+</body>
+</html>
